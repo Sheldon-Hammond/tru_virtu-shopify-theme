@@ -161,14 +161,7 @@
     display: none !important;
   }
 }
-@layer utilities {
-  .tw\:bg-amber-50 {
-    background-color: var(--tw-color-amber-50);
-  }
-  .tw\:bg-red-500 {
-    background-color: var(--tw-color-red-500);
-  }
-}
+@layer utilities;
 @layer theme, base, components, utilities;
 @layer theme;
 @layer base {
