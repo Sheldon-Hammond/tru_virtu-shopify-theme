@@ -15,14 +15,21 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "heading": "<p><strong>TRU VIRTU®</strong></p><p><strong>Trackable Wallet</strong></p>",
+            "heading_size": "h1"
+          }
+        },
+        "text_xcj89Y": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Maximum functionality</strong></p><p><strong>Minimum size</strong></p>",
+            "text_style": "body"
           }
         },
         "button": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Shop all",
+            "button_label_1": "Discover the collection",
             "button_link_1": "shopify://collections/all",
             "button_style_secondary_1": true,
             "button_label_2": "",
@@ -33,52 +40,268 @@
       },
       "block_order": [
         "heading",
+        "text_xcj89Y",
         "button"
       ],
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
+        "image": "shopify://shop_images/DI_20260602_Website_Startseite_DM-Hero3.jpg",
+        "mob_image": "shopify://shop_images/DI20260602_Header_Site-Stone_Quadratisch1zu1_mob.jpg",
+        "image_overlay_opacity": 10,
+        "full_width": true,
+        "image_height": "adapt",
         "image_behavior": "none",
-        "desktop_content_alignment": "center",
+        "desktop_content_position": "middle-left",
+        "desktop_content_alignment": "left",
+        "show_text_box": false,
         "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
+        "mobile_content_alignment": "left",
         "show_text_below": false
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "icons_row_G87j4c": {
+      "type": "icons-row",
+      "blocks": {
+        "icon_P9Andx": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/made-in-germanyqUR8rpnBPK226.png",
+            "text": "Made in Germany"
+          }
+        },
+        "icon_pmijqr": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/lederhCznCpzV0LXoH.png",
+            "text": "Real Leather"
+          }
+        },
+        "icon_YQCWDK": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/patentOVQmGpESmFmlc.png",
+            "text": "Patented Technology"
+          }
+        },
+        "icon_hMJaBH": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/kleinste-abmessungenPxWI7k5k37fhz.png",
+            "text": "Smallest Dimensions"
+          }
+        },
+        "icon_jRyK6b": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify://shop_images/rfid-safeigifBlco3ye8x.png",
+            "text": "RFID-secure"
+          }
+        }
+      },
+      "block_order": [
+        "icon_P9Andx",
+        "icon_pmijqr",
+        "icon_YQCWDK",
+        "icon_hMJaBH",
+        "icon_jRyK6b"
+      ],
+      "name": "Icon Row",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
+        "heading": "",
+        "icon_height": 60,
+        "background_color": "#f3f3ee"
+      }
+    },
+    "rich_text_ggDJkC": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_kP3NVU": {
+          "type": "heading",
+          "settings": {
+            "heading": "<p><strong>Our models -<br/>The right one for everyone.</strong></p>",
+            "heading_size": "h1"
+          }
+        },
+        "text_73WLHA": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We know: Tastes and needs are different. That's why we have created a variety of models that will surely convince you.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_kP3NVU",
+        "text_73WLHA"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
         "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "padding_top": 44,
+        "padding_top": 40,
+        "padding_bottom": 20
+      }
+    },
+    "image_banner_cVXMKw": {
+      "type": "image-banner",
+      "blocks": {
+        "text_button_row_6tF4MT": {
+          "type": "text_button_row",
+          "settings": {
+            "text": "<p>Innovative card cases and wallets</p>",
+            "button_text": "To the models",
+            "button_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_button_row_6tF4MT"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/DM-Big-Image-Bild-2.jpg",
+        "image_overlay_opacity": 0,
+        "full_width": false,
+        "image_height": "adapt",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "multirow_bEecqa": {
+      "type": "multirow",
+      "blocks": {
+        "row_VT4H7n": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/Startseite-claim-Reduced-to-the-Max.jpg",
+            "caption": "",
+            "heading": "<strong>TRU VIRTU - Reduced to the Max!</strong>",
+            "text": "<p>Maximum functionality in the smallest space - and still really classy. TRU VIRTU stands for innovative, highly functional card cases and wallets with a protective function, combined with a distinctive design and high quality. Convince yourself.</p>",
+            "button_label": "More about TRU VIRTU",
+            "button_link": "#"
+          }
+        },
+        "row_DbwrnB": {
+          "type": "row",
+          "settings": {
+            "video": "shopify://files/videos/huebsche-fassade-viel-dahinter1qNSZiGAsytCW.mp4",
+            "caption": "",
+            "heading": "<strong>Pretty facade — a lot behind it.</strong>",
+            "text": "<p>Unique design and product quality combine with the beauty and tradition of genuine Italian leather to create unique products in mini pocket format. TRU VIRTU - Made in Germany.</p>",
+            "button_label": "Learn More",
+            "button_link": "#"
+          }
+        },
+        "row_4dH7Aj": {
+          "type": "row",
+          "settings": {
+            "video": "shopify://files/videos/Unser-Ziel-Ihre-Sicherheit-stummsYyJOoiBHq2Xa.mp4",
+            "caption": "",
+            "heading": "<strong>Our goal: your safety.</strong>",
+            "text": "<p>All TRU VIRTU wallets and card cases have an integrated scan protection. This protects your card data, which is stored on NFC and RFID chips of your credit and EC cards, from illegal reading.</p>",
+            "button_label": "Learn More",
+            "button_link": "#"
+          }
+        }
+      },
+      "block_order": [
+        "row_VT4H7n",
+        "row_DbwrnB",
+        "row_4dH7Aj"
+      ],
+      "name": "t:sections.multirow.presets.name",
+      "settings": {
+        "image_height": "adapt",
+        "desktop_image_width": "medium",
+        "image_layout": "alternate-left",
+        "heading_size": "h2",
+        "text_style": "body",
+        "button_style": "text",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "row_color_scheme": "",
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
+    },
+    "collection_slider_GLKM4k": {
+      "type": "collection-slider",
+      "name": "Collection Slider",
+      "settings": {
+        "heading": "The Novelties",
+        "collection": "frontpage",
+        "desktop_products": 5,
+        "tablet_products": 3,
+        "mobile_products": 1,
+        "space_between": 20,
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
+    },
+    "multirow_8N4XhF": {
+      "type": "multirow",
+      "blocks": {
+        "row_7kE78J": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/soziale-verantwortungSWtorZH9ypk9s.jpg",
+            "caption": "",
+            "heading": "<strong>Our social responsibility — Made in Germany.</strong>",
+            "text": "<p>All Click&Slide products are exclusively developed and also produced in Germany. In close cooperation with more than 20 suppliers, our patented card cases and wallets are created at our Berlin location in collaboration with a workshop for the disabled.</p>",
+            "button_label": "About TRU VIRTU",
+            "button_link": ""
+          }
+        },
+        "row_pUqWY8": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/italienisches-lederp091ieRbXlBv4.jpg",
+            "caption": "Caption",
+            "heading": "<strong>Italian leather</strong>",
+            "text": "<p>All our leathers are carefully selected and come from tanneries in Italy. You can say the new \"Click & Slide\" wallet collection combines the best of both worlds: Patented technology \"Made in Germany\" with genuine Italian leather. This creates a unique product experience.</p>",
+            "button_label": "About TRU VIRTU",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_7kE78J",
+        "row_pUqWY8"
+      ],
+      "name": "t:sections.multirow.presets.name",
+      "settings": {
+        "image_height": "adapt",
+        "desktop_image_width": "medium",
+        "image_layout": "alternate-right",
+        "heading_size": "h2",
+        "text_style": "body",
+        "button_style": "text",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-2",
+        "row_color_scheme": "scheme-2",
+        "padding_top": 36,
         "padding_bottom": 36
       }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "icons_row_G87j4c",
+    "rich_text_ggDJkC",
+    "image_banner_cVXMKw",
+    "multirow_bEecqa",
+    "collection_slider_GLKM4k",
+    "multirow_8N4XhF"
   ]
 }

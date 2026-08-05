@@ -1,0 +1,277 @@
+<section class="collection-slider section-{{ section.id }}">
+  <div class="page-width">
+
+    {% if section.settings.heading != blank %}
+      <h2 class="collection-slider__heading">
+        {{ section.settings.heading }}
+      </h2>
+    {% endif %}
+
+    {% assign selected_collection = section.settings.collection %}
+
+    <div class="collection-slider__wrapper">
+
+      <button class="collection-slider__arrow collection-slider__arrow--prev">
+        &#10094;
+      </button>
+
+      <div class="swiper collection-slider-swiper-{{ section.id }}">
+        <div class="swiper-wrapper">
+
+          {% for product in selected_collection.products %}
+            <div class="swiper-slide">
+
+              {{ product.url }}
+
+                <div class="product-card__image-wrapper">
+
+                  {% if product.compare_at_price > product.price %}
+                    {% assign discount = product.compare_at_price
+                      | minus: product.price
+                      | times: 100
+                      | divided_by: product.compare_at_price
+                    %}
+
+                    <span class="product-card__badge">
+                      {{ discount }}% Sale
+                    </span>
+                  {% endif %}
+
+                  {% if product.featured_image %}
+                    {{
+                      product.featured_image
+                      | image_url: width: 600
+                      | image_tag:
+                        loading: 'lazy',
+                        class: 'product-card__image'
+                    }}
+                  {% endif %}
+                </div>
+
+                <h3 class="product-card__title">
+                  {{ product.title }}
+                </h3>
+
+                <div class="product-card__price">
+
+                  <span class="product-card__price-current">
+                    {{ product.price | money }}
+                  </span>
+
+                  {% if product.compare_at_price > product.price %}
+                    <span class="product-card__price-compare">
+                      {{ product.compare_at_price | money }}
+                    </span>
+                  {% endif %}
+
+                </div>
+
+              </a>
+
+            </div>
+          {% endfor %}
+
+        </div>
+      </div>
+
+      <button class="collection-slider__arrow collection-slider__arrow--next">
+        &#10095;
+      </button>
+    </div>
+  </div>
+</section>
+
+
+
+<style>
+.section-{{ section.id }} {
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+}
+
+.collection-slider__heading {
+  margin-bottom: 30px;
+}
+
+.collection-slider__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.collection-slider__arrow {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font-size: 40px;
+  line-height: 1;
+  color: #000;
+  flex-shrink: 0;
+}
+
+.product-card {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.product-card__image-wrapper {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.product-card__image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.product-card__badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #e2574c;
+  color: #fff;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  z-index: 2;
+}
+
+.product-card__title {
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 10px 0;
+}
+
+.product-card__price {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+}
+
+.product-card__price-current {
+  color: #e2574c;
+  font-weight: 700;
+}
+
+.product-card__price-compare {
+  text-decoration: line-through;
+  color: #666;
+}
+
+.swiper {
+  width: 100%;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  new Swiper('.collection-slider-swiper-{{ section.id }}', {
+    loop: true,
+
+    spaceBetween: {{ section.settings.space_between }},
+
+    navigation: {
+      nextEl: '.section-{{ section.id }} .collection-slider__arrow--next',
+      prevEl: '.section-{{ section.id }} .collection-slider__arrow--prev'
+    },
+
+    breakpoints: {
+      0: {
+        slidesPerView: {{ section.settings.mobile_products }}
+      },
+      768: {
+        slidesPerView: {{ section.settings.tablet_products }}
+      },
+      990: {
+        slidesPerView: {{ section.settings.desktop_products }}
+      }
+    }
+  });
+
+});
+</script>
+
+{% schema %}
+{
+  "name": "Collection Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The Novelties"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "desktop_products",
+      "label": "Products on desktop",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "tablet_products",
+      "label": "Products on tablet",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "mobile_products",
+      "label": "Products on mobile",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "space_between",
+      "label": "Space between products",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Slider",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
