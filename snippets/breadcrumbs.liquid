@@ -1,0 +1,64 @@
+{% liquid
+  if request.page_type == 'product'
+    assign current_collection = collection | default: product.collections.first
+  endif
+%}
+
+{% unless request.page_type == 'index' %}
+  <div class="tw:bg-[#F8F8F8] tw:border-solid tw:border-b tw:border-border_1! breadcrumb_container">
+    <div class="page-width">
+      <nav class="tw:text-small tw:py-4" aria-label="Breadcrumb">
+        <ul class="tw:flex tw:flex-wrap tw:items-center tw:gap-5">
+          <li>
+            <a href="{{ routes.root_url }}" class="tw:underline tw:underline-offset-[0.3rem] tw:hover:no-underline">Home</a>
+          </li>
+
+          {% case request.page_type %}
+            {% when 'collection' %}
+              <li>
+                <div class=" tw:w-4 tw:h-4 tw:flex tw:items-center tw:rotate-270 tw:[&_.icon-caret_path]:stroke-[0.5]">
+                  {{- 'icon-caret.svg' | inline_asset_content -}}
+                </div>
+              </li>
+              <li aria-current="page">
+                {{ collection.title }}
+              </li>
+
+            {% when 'product' %}
+              {% if current_collection %}
+                <li>
+                  <div class=" tw:w-4 tw:h-4 tw:flex tw:items-center tw:rotate-270 tw:[&_.icon-caret_path]:stroke-[0.5]">
+                    {{- 'icon-caret.svg' | inline_asset_content -}}
+                  </div>
+                </li>
+                <li>
+                  <a href="{{ current_collection.url }}">
+                    {{ current_collection.title }}
+                  </a>
+                </li>
+              {% endif %}
+
+              <li>
+                <div class=" tw:w-4 tw:h-4 tw:flex tw:items-center tw:rotate-270 tw:[&_.icon-caret_path]:stroke-[0.5]">
+                  {{- 'icon-caret.svg' | inline_asset_content -}}
+                </div>
+              </li>
+              <li aria-current="page">
+                {{ product.title }}
+              </li>
+
+            {% when 'page' %}
+              <li>
+                <div class=" tw:w-4 tw:h-4 tw:flex tw:items-center tw:rotate-270 tw:[&_.icon-caret_path]:stroke-[0.5]">
+                  {{- 'icon-caret.svg' | inline_asset_content -}}
+                </div>
+              </li>
+              <li aria-current="page">
+                {{ page.title }}
+              </li>
+          {% endcase %}
+        </ul>
+      </nav>
+    </div>
+  </div>
+{% endunless %}

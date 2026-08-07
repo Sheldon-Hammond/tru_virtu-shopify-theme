@@ -11,11 +11,45 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "newsletter_zdRKqq": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_kM34nb": {
+          "type": "heading",
+          "settings": {
+            "heading": "Subscribe to our newsletter",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph_VMEeJ8": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Would you like to be informed about new products, promotions, vouchers and offers via email in the future?</p><p>Then register now!</p>"
+          }
+        },
+        "email_form_BLCJnC": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading_kM34nb",
+        "paragraph_VMEeJ8",
+        "email_form_BLCJnC"
+      ],
+      "name": "t:sections.newsletter.presets.name",
+      "settings": {
+        "color_scheme": "scheme-7cc1562f-323d-4c6d-a113-dc6a9a9e764f",
+        "full_width": true,
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
+    },
     "footer": {
       "type": "footer",
       "settings": {
-        "color_scheme": "scheme-1",
-        "newsletter_enable": true,
+        "color_scheme": "scheme-4",
+        "newsletter_enable": false,
         "newsletter_heading": "Subscribe to our emails",
         "enable_follow_on_shop": true,
         "show_social": true,
@@ -24,12 +58,13 @@
         "payment_enable": true,
         "show_policy": true,
         "margin_top": 0,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     }
   },
   "order": [
+    "newsletter_zdRKqq",
     "footer"
   ]
 }

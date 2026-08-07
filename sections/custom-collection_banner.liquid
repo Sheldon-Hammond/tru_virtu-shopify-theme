@@ -1,0 +1,109 @@
+{% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+{{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign collection_image = section.settings.collection_image
+  assign banner_text = section.settings.banner_text
+  assign banner_bg_colour = section.settings.banner_col
+  assign banner_text_colour = section.settings.font_col
+
+  assign heading = section.settings.heading
+  assign text = section.settings.text
+%}
+
+{%- style -%}
+  .top_banner-container{
+      background: {{banner_bg_colour}}
+  }
+  .top_banner-heading{
+    color: {{banner_text_colour}}
+  }
+{%- endstyle -%}
+
+{% render 'breadcrumbs' %}
+
+<div class="custom_collection-banner--container tw:pb-[32px]">
+  <div class="tw:aspect-[32/9] image_container--banner">
+    {% if banner_text != null %}
+      <div class="top_banner-container">
+        <div class="page-width">
+          <div class="tw:py-10 tw:text-center tw:font-bold! tw:text-[27px]! top_banner-heading">
+            {{ banner_text }}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+    <div class="image_container tw:w-full tw:h-full">
+      {% if collection_image != null %}
+        {{
+          collection_image
+          | image_url: width: 6000
+          | image_tag:
+            loading: 'lazy',
+            widths: '400, 800, 1200, 1600, 2000, 2400, 2800',
+            class: 'tw:w-full tw:h-full tw:object-cover',
+            alt: 'wallet banner image'
+        }}
+      {% else %}
+        {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+  </div>
+  <div class="description--container">
+    <div class="page-width">
+      <div class="tw:text-heading tw:font-bold tw:mt-[32px] tw:mb-[20px]">
+        {{ heading }}
+      </div>
+      <div class="tw:text-base">
+        {{ text }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-collection-banner.name",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "collection_image",
+      "label": "Banner Image"
+    },
+    {
+      "type": "header",
+      "content": "Additional Banner"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "banner_text",
+      "label": "Top Banner Text",
+      "info": "Adds a secondary banner to top"
+    },
+    {
+      "type": "color",
+      "id": "banner_col",
+      "label": "Top Banner Color",
+      "alpha": true
+    },
+    {
+      "type": "color",
+      "id": "font_col",
+      "label": "Top Font Banner Color",
+      "alpha": true
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    }
+  ]
+}
+{% endschema %}
+ 
