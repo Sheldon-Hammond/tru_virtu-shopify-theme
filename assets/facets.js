@@ -440,3 +440,20 @@ class FacetRemove extends HTMLElement {
 }
 
 customElements.define('facet-remove', FacetRemove);
+
+document.addEventListener('DOMContentLoaded', () => {
+  const button = document.getElementById('verticalTitle');
+  const container = document.querySelector('.filter_item-container');
+  
+
+  button?.addEventListener('click', (e) => {
+    e.preventDefault();
+    container?.classList.toggle('is-expanded');
+    button?.classList.toggle('open');
+    if (container.style.maxHeight === '0px' || !container.style.maxHeight) {
+      container.style.maxHeight = `${container.scrollHeight}px`;
+    } else {
+      container.style.maxHeight = '0px';
+    }
+  });
+});

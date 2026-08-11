@@ -774,9 +774,9 @@ summary::-webkit-details-marker {
 }
 
 .focus-offset:focus-visible {
-  outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
-  outline-offset: 1rem;
-  box-shadow: 0 0 0 1rem rgb(var(--color-background)), 0 0 0.2rem 1.2rem rgba(var(--color-foreground), 0.3);
+  outline: 0.1rem solid rgba(var(--color-foreground), 0.5);
+  outline-offset: 0rem;
+  box-shadow: 0 0 0 0rem rgb(var(--color-background)), 0 0 0rem 0rem rgba(var(--color-foreground), 0.3);
 }
 
 .focus-offset.focused {
