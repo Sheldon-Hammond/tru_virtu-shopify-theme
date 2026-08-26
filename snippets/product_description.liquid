@@ -1,0 +1,170 @@
+{% liquid
+  assign specifications = product.metafields.custom.specifications.value
+  assign user_manual = product.metafields.custom.user_manual.value
+  assign description_image = product.metafields.custom.description_image
+
+  assign specification_order = 'colour,material,warranty,dimensions,weight,coin_pocket,rfid,target_group,max_card_amount,country_of_origin' | split: ','
+%}
+{{ 'product-description.css' | asset_url | stylesheet_tag }}
+<div class="product_info-wrapper">
+  <div class="product_info_nav-container">
+    {% if product.description != blank %}
+      <button
+        class="product_info-tab is-active"
+        type="button"
+        data-tab="description"
+      >
+        Description
+      </button>
+    {% endif %}
+
+    {% if specifications != blank %}
+      <button
+        class="product_info-tab"
+        type="button"
+        data-tab="specifications"
+      >
+        Specifications
+      </button>
+    {% endif %}
+    {% if user_manual != blank %}
+      <button
+        class="product_info-tab"
+        type="button"
+        data-tab="manual"
+      >
+        User Manual
+      </button>
+    {% endif %}
+  </div>
+  <div class="product_info-inner">
+    {% if product.description != blank %}
+      <div class="product_info-panel is-active" data-panel="description">
+        <div class="tab_header">
+          <button
+            class="product_info-tab is-active"
+            type="button"
+            data-tab="description"
+          >
+            Description
+            <div class="acc_icon">
+              {{- 'icon-plus.svg' | inline_asset_content -}}
+              {{- 'icon-minus.svg' | inline_asset_content -}}
+            </div>
+          </button>
+        </div>
+        <div class="product_info-content">
+          {{ product.description }}
+          {% if description_image != blank %}
+            <div class="tw:mt-[20px] tw:mx-auto tw:w-fit">
+              {{ description_image | image_url: width: description_image.width | image_tag }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+    {% if specifications != blank %}
+      <div class="product_info-panel" data-panel="specifications">
+        <div class="tab_header">
+          <button
+            class="product_info-tab"
+            type="button"
+            data-tab="specifications"
+          >
+            Specifications
+            <div class="acc_icon">
+              {{- 'icon-plus.svg' | inline_asset_content -}}
+              {{- 'icon-minus.svg' | inline_asset_content -}}
+            </div>
+          </button>
+        </div>
+        <div class="product_info-content">
+          <table>
+            <tbody>
+              {% if product.vendor != blank %}
+                <tr>
+                  <td class="label">Brand:</td>
+                  <td>{{ product.vendor }}</td>
+                </tr>
+              {% endif %}
+              {% if product.selected_or_first_available_variant.sku != blank %}
+                <tr>
+                  <td class="label">SKU:</td>
+                  <td>{{ product.selected_or_first_available_variant.sku }}</td>
+                </tr>
+              {% endif %}
+
+              {% for spec in specification_order %}
+                {% liquid
+                  assign key_name = spec | replace: '_', ' '
+
+                  assign spec_type = specifications[spec].type
+                  assign spec_value = specifications[spec].value
+
+                  if spec_type == 'list.single_line_text_field'
+                    assign spec_value = spec_value | join: ', '
+                  endif
+
+                  if spec == 'rfid'
+                    assign key_name = 'RFID'
+                    if spec_value == false
+                      assign spec_value = 'No RFID protection'
+                    elsif spec_value == true
+                      assign spec_value = 'RFID protection'
+                    endif
+                  elsif spec == 'coin_pocket'
+                    if spec_value == false
+                      assign spec_value = 'No'
+                    elsif spec_value == true
+                      assign spec_value = 'Yes'
+                    endif
+                  endif
+                %}
+                {% if spec_value != blank %}
+                  <tr>
+                    <td class="label">{{ key_name }}:</td>
+                    <td>{{ spec_value }}</td>
+                  </tr>
+                {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    {% endif %}
+    {% if user_manual != blank %}
+      <div class="product_info-panel" data-panel="manual">
+        <div class="tab_header">
+          <button
+            class="product_info-tab"
+            type="button"
+            data-tab="manual"
+          >
+            User Manual
+            <div class="acc_icon">
+              {{- 'icon-plus.svg' | inline_asset_content -}}
+              {{- 'icon-minus.svg' | inline_asset_content -}}
+            </div>
+          </button>
+        </div>
+        <div class="product_info-content">
+          {% if user_manual.richtext != blank %}
+            <div class="tw:[&_ol]:list-decimal tw:[&_ol]:list-inside tw:mb-[20px]">
+              {{ user_manual.richtext | metafield_tag }}
+            </div>
+          {% endif %}
+          {% if user_manual.image != blank %}
+            <div class="tw:mx-auto tw:w-fit">
+              {{
+                user_manual.image
+                | image_url: width: user_manual.image.width
+                | image_tag: alt: 'User Manual Image', loading: 'lazy'
+              }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+<script src="{{ 'product_description.js' | asset_url }}" defer="defer"></script>

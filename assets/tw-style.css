@@ -8,7 +8,6 @@
       "Segoe UI Symbol", "Noto Color Emoji";
     --tw-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --tw-color-amber-300: oklch(87.9% 0.169 91.605);
     --tw-color-black: #000;
     --tw-color-white: #fff;
     --tw-spacing: 0.25rem;
@@ -23,12 +22,15 @@
     --tw-default-font-family: var(--tw-font-sans);
     --tw-default-mono-font-family: var(--tw-font-mono);
     --tw-color-bg_primary: #F1F3E8;
+    --tw-color-bg_secondary: #333333;
     --tw-color-bg_grey: #F5F5F5;
     --tw-color-custom_black: #191919;
     --tw-color-border_1: #e9e9e9;
+    --tw-color-tru_red: #df514d;
     --tw-text-small: 1.4rem;
     --tw-text-heading: 3.2rem;
     --tw-text-sub_heading: 2.4rem;
+    --tw-font-source_sans: "Source Sans Pro", sans-serif;
   }
 }
 @layer base {
@@ -213,6 +215,18 @@
   .tw\:m-0\! {
     margin: 0px !important;
   }
+  .tw\:mx-auto {
+    margin-inline: auto;
+  }
+  .tw\:my-0\! {
+    margin-block: 0px !important;
+  }
+  .tw\:my-\[20px\]\! {
+    margin-block: 20px !important;
+  }
+  .tw\:my-\[30px\]\! {
+    margin-block: 30px !important;
+  }
   .tw\:mt-0\! {
     margin-top: 0px !important;
   }
@@ -222,8 +236,17 @@
   .tw\:mt-\[0px\]\! {
     margin-top: 0px !important;
   }
+  .tw\:mt-\[20px\] {
+    margin-top: 20px;
+  }
   .tw\:mt-\[32px\] {
     margin-top: 32px;
+  }
+  .tw\:mt-\[50px\] {
+    margin-top: 50px;
+  }
+  .tw\:mb-0\! {
+    margin-bottom: 0px !important;
   }
   .tw\:mb-10 {
     margin-bottom: calc(var(--tw-spacing) * 10);
@@ -246,8 +269,14 @@
   .tw\:flex {
     display: flex;
   }
+  .tw\:flex\! {
+    display: flex !important;
+  }
   .tw\:grid {
     display: grid;
+  }
+  .tw\:hidden {
+    display: none;
   }
   .tw\:hidden\! {
     display: none !important;
@@ -270,6 +299,9 @@
   .tw\:h-\[15px\] {
     height: 15px;
   }
+  .tw\:h-\[35px\] {
+    height: 35px;
+  }
   .tw\:h-auto {
     height: auto;
   }
@@ -281,6 +313,9 @@
   }
   .tw\:min-h-160 {
     min-height: calc(var(--tw-spacing) * 160);
+  }
+  .tw\:min-h-\[35px\]\! {
+    min-height: 35px !important;
   }
   .tw\:w-4 {
     width: calc(var(--tw-spacing) * 4);
@@ -294,11 +329,20 @@
   .tw\:w-\[15px\] {
     width: 15px;
   }
+  .tw\:w-\[40px\]\! {
+    width: 40px !important;
+  }
   .tw\:w-auto {
     width: auto;
   }
+  .tw\:w-fit {
+    width: fit-content;
+  }
   .tw\:w-full {
     width: 100%;
+  }
+  .tw\:max-w-none\! {
+    max-width: none !important;
   }
   .tw\:min-w-\[100px\] {
     min-width: 100px;
@@ -306,8 +350,14 @@
   .tw\:min-w-\[200px\] {
     min-width: 200px;
   }
+  .tw\:flex-none\! {
+    flex: none !important;
+  }
   .tw\:shrink-0 {
     flex-shrink: 0;
+  }
+  .tw\:grow {
+    flex-grow: 1;
   }
   .tw\:rotate-90 {
     rotate: 90deg;
@@ -317,6 +367,12 @@
   }
   .tw\:cursor-pointer {
     cursor: pointer;
+  }
+  .tw\:list-inside {
+    list-style-position: inside;
+  }
+  .tw\:list-disc {
+    list-style-type: disc;
   }
   .tw\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -363,17 +419,26 @@
   .tw\:gap-13\! {
     gap: calc(var(--tw-spacing) * 13) !important;
   }
+  .tw\:gap-\[5px\] {
+    gap: 5px;
+  }
   .tw\:gap-\[8px\] {
     gap: 8px;
   }
   .tw\:gap-\[10px\] {
     gap: 10px;
   }
+  .tw\:gap-\[15px\] {
+    gap: 15px;
+  }
   .tw\:gap-\[25px\] {
     gap: 25px;
   }
   .tw\:rounded {
     border-radius: 0.25rem;
+  }
+  .tw\:rounded-\[0px\]\! {
+    border-radius: 0px !important;
   }
   .tw\:rounded-md {
     border-radius: var(--tw-radius-md);
@@ -405,6 +470,9 @@
   }
   .tw\:bg-\[\#5fb95f\] {
     background-color: #5fb95f;
+  }
+  .tw\:bg-\[\#5fb95f\]\! {
+    background-color: #5fb95f !important;
   }
   .tw\:bg-\[\#F8F8F8\] {
     background-color: #F8F8F8;
@@ -499,6 +567,9 @@
   .tw\:text-center {
     text-align: center;
   }
+  .tw\:font-source_sans\! {
+    font-family: var(--tw-font-source_sans) !important;
+  }
   .tw\:text-base {
     font-size: var(--tw-text-base);
     line-height: var(--tw-leading, var(--tw-text-base--line-height));
@@ -522,6 +593,12 @@
   .tw\:text-\[20px\] {
     font-size: 20px;
   }
+  .tw\:text-\[24px\]\! {
+    font-size: 24px !important;
+  }
+  .tw\:text-\[26px\]\! {
+    font-size: 26px !important;
+  }
   .tw\:text-\[27px\]\! {
     font-size: 27px !important;
   }
@@ -539,6 +616,14 @@
   }
   .tw\:text-sub_heading\! {
     font-size: var(--tw-text-sub_heading) !important;
+  }
+  .tw\:leading-0 {
+    --tw-leading: 0px;
+    line-height: 0px;
+  }
+  .tw\:leading-\[1\.4\]\! {
+    --tw-leading: 1.4 !important;
+    line-height: 1.4 !important;
   }
   .tw\:leading-none {
     --tw-leading: 1;
@@ -577,6 +662,9 @@
   .tw\:text-custom_black\! {
     color: var(--tw-color-custom_black) !important;
   }
+  .tw\:text-tru_red {
+    color: var(--tw-color-tru_red);
+  }
   .tw\:text-white {
     color: var(--tw-color-white);
   }
@@ -611,8 +699,18 @@
     .tw\:group-hover\/card\:underline:is(:where(.tw\:group\/card):hover *) {
       text-decoration-line: underline;
     }
+  }
+  .tw\:after\:content-none\!::after {
+    content: var(--tw-content);
+    --tw-content: none !important;
+    content: none !important;
+  }
+  @media (hover: hover) {
     .tw\:hover\:border-black:hover {
       border-color: var(--tw-color-black);
+    }
+    .tw\:hover\:bg-\[\#509a50\]\!:hover {
+      background-color: #509a50 !important;
     }
     .tw\:hover\:bg-custom_black:hover {
       background-color: var(--tw-color-custom_black);
@@ -626,6 +724,9 @@
     .tw\:hover\:no-underline:hover {
       text-decoration-line: none;
     }
+  }
+  .tw\:disabled\:bg-bg_secondary\!:disabled {
+    background-color: var(--tw-color-bg_secondary) !important;
   }
   @media (width < 480px) {
     .tw\:max-mob\:block\! {
@@ -666,6 +767,18 @@
   }
   .tw\:\[\&_\.icon-caret_path\]\:stroke-\[0\.5\] .icon-caret path {
     stroke-width: 0.5;
+  }
+  .tw\:\[\&_ol\]\:list-inside ol {
+    list-style-position: inside;
+  }
+  .tw\:\[\&_ol\]\:list-decimal ol {
+    list-style-type: decimal;
+  }
+  .tw\:\[\&_ul\]\:list-inside ul {
+    list-style-position: inside;
+  }
+  .tw\:\[\&_ul\]\:list-disc ul {
+    list-style-type: disc;
   }
 }
 @layer theme, base, components, utilities;
@@ -840,6 +953,11 @@
   syntax: "*";
   inherits: false;
 }
+@property --tw-content {
+  syntax: "*";
+  initial-value: "";
+  inherits: false;
+}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
@@ -848,6 +966,7 @@
       --tw-font-weight: initial;
       --tw-tracking: initial;
       --tw-duration: initial;
+      --tw-content: "";
     }
   }
 }

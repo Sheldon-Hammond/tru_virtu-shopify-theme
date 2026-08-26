@@ -15,6 +15,7 @@
   - media_fit: {String} Method ("contain" or "cover") to fit image into container
   - media_width: {Float} The width percentage that the media column occupies on desktop.
   - lazy_load: {Boolean} Image should be lazy loaded. Default: true (optional)
+  - image_ratio: {String} aspect ratio
 
   Usage:
   {% render 'product-thumbnail',
@@ -43,6 +44,14 @@
   if media.media_type == 'image'
     assign image_class = 'image-magnify-' | append: section.settings.image_zoom
   endif
+  
+  if image_ratio == 'square'
+    assign image_aspect_ratio = 1
+    assign image_aspect_ratio_preview = 1
+  else
+    assign image_aspect_ratio = media.aspect_ration | default: 1.0
+    assign image_aspect_ratio_preview = media.preview_image.aspect_ratio | default: 1.0
+  endif
 -%}
 
 {%- capture sizes -%}
@@ -51,8 +60,9 @@
 
 <div
   class="product-media-container media-type-{{ media.media_type }} media-fit-{{ media_fit }} global-media-settings gradient{% if constrain_to_viewport %} constrain-height{% endif %}"
-  style="--ratio: {{ media.aspect_ratio | default: 1.0 }}; --preview-ratio: {{ media.preview_image.aspect_ratio | default: 1.0 }};"
+  style="--ratio: {{ image_aspect_ratio }}; --preview-ratio: {{ image_aspect_ratio_preview }};"
 >
+
   <modal-opener
     class="product__modal-opener product__modal-opener--{{ media.media_type }}"
     data-modal="#ProductModal-{{ modal_id }}"

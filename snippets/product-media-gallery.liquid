@@ -6,6 +6,7 @@
   - product: {Object} Product liquid object
   - variant_images: {Array} Product images associated with a variant
   - limit: {Number} (optional) When passed, limits the number of media items to render
+  - image_ratio: {String} (optional) when passed will change the aspect of the image container. Square or adapt. If not passed will be adapt
 
   Usage:
   {% render 'product-media-gallery' %}
@@ -40,6 +41,7 @@
   elsif section.settings.media_size == 'small'
     assign media_width = 0.45
   endif
+  
 -%}
 
 <media-gallery
@@ -81,7 +83,8 @@
             media_width: media_width,
             media_fit: section.settings.media_fit,
             constrain_to_viewport: section.settings.constrain_to_viewport,
-            lazy_load: false
+            lazy_load: false,
+            image_ratio: image_ratio
           %}
         </li>
       {%- endif -%}
@@ -119,7 +122,8 @@
               media_width: media_width,
               media_fit: section.settings.media_fit,
               constrain_to_viewport: section.settings.constrain_to_viewport,
-              lazy_load: lazy_load
+              lazy_load: lazy_load,
+              image_ratio: image_ratio 
             %}
           </li>
         {%- endunless -%}

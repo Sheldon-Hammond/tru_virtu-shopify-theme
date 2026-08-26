@@ -15,7 +15,7 @@
         "collection_image": "shopify://shop_images/Header-geldboerse2ESoj0XuSX5JN_cc02a647-a026-4aa3-820a-1fbe9f74ea92.jpg",
         "banner_text": "TRU VIRTU® - Hi-Tech Wallets and Card Cases - Made in Germany",
         "banner_col": "#b48154",
-        "font_col": "#FFFFFF",
+        "font_col": "#ffffff",
         "heading": "Scan protection for your cards",
         "text": "<p>All TRU VIRTU wallets and card cases have integrated scan protection. This protects your card data, which is stored on the NFC and RFID chips of your credit and debit cards, from unauthorized reading.</p>"
       }
@@ -32,7 +32,7 @@
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
-        "quick_add": "none",
+        "quick_add": "standard",
         "enable_filtering": true,
         "filter_type": "horizontal",
         "enable_sorting": true,

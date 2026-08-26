@@ -10,7 +10,7 @@
   Usage:
   {% render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true %}
 {% endcomment %}
-<div {{ block.shopify_attributes }}>
+<div {{ block.shopify_attributes }} class="tw:w-auto tw:grow">
   {%- if product != blank -%}
     {%- liquid
       assign gift_card_recipient_feature_active = false
@@ -25,7 +25,7 @@
     -%}
 
     <product-form
-      class="product-form"
+      class="product-form tw:my-0!"
       data-hide-errors="{{ gift_card_recipient_feature_active }}"
       data-section-id="{{ section.id }}"
     >
@@ -60,7 +60,7 @@
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
         {%- endif -%}
 
-        <div class="product-form__buttons">
+        <div class="tw:max-w-none! product-form__buttons">
           {%- liquid
             assign check_against_inventory = true
             if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'
@@ -74,7 +74,7 @@
             id="ProductSubmitButton-{{ section_id }}"
             type="submit"
             name="add"
-            class="product-form__submit button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
+            class="tw:after:content-none! tw:disabled:bg-bg_secondary! tw:hover:bg-[#509a50]! tw:mb-0! tw:leading-0 tw:tracking-normal tw:min-h-[35px]! tw:rounded-[0px]! tw:bg-[#5fb95f]! product-form__submit button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
             {% if product.selected_or_first_available_variant.available == false
               or quantity_rule_soldout
               or product.selected_or_first_available_variant == null
@@ -82,7 +82,7 @@
               disabled
             {% endif %}
           >
-            <span>
+            <span class="tw:font-bold">
               {%- if product.selected_or_first_available_variant == null -%}
                 {{ 'products.product.unavailable' | t }}
               {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
@@ -105,7 +105,7 @@
         <button
           type="submit"
           name="add"
-          class="product-form__submit button button--full-width button--primary"
+          class="tw:mb-0! product-form__submit button button--full-width button--primary"
           disabled
         >
           {{ 'products.product.sold_out' | t }}

@@ -1,0 +1,18 @@
+{% liquid
+  assign card_amount = card_amount | default: 12
+%}
+
+<div class="shop_award-container">
+  <div>
+    {{
+      images['excellent_shop-EN.png']
+      | image_url: width: images['excellent_shop-EN.png'].width
+      | image_tag: alt: 'excellent_shop-EN.png'
+    }}
+  </div>
+  <ul class="tw:list-disc tw:list-inside">
+    <li>RFID-secure – protects cards against illegal data theft</li>
+    <li>Space for up to {{ card_amount }} cards</li>
+    <li>Quick card access</li>
+  </ul>
+</div>

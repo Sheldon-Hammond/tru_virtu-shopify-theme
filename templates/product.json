@@ -12,19 +12,16 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
         "title": {
           "type": "title",
           "settings": {}
         },
         "price": {
           "type": "price",
+          "settings": {}
+        },
+        "excellent_shop_K3WPxe": {
+          "type": "excellent_shop",
           "settings": {}
         },
         "variant_picker": {
@@ -34,49 +31,43 @@
             "swatch_shape": "circle"
           }
         },
-        "quantity_selector": {
-          "type": "quantity_selector",
+        "buy_button_VMXJDi": {
+          "type": "buy_button",
           "settings": {}
         },
-        "buy_buttons": {
-          "type": "buy_buttons",
+        "richtext_KpNk9F": {
+          "type": "richtext",
           "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
+            "richtext_text": "{{ product.metafields.custom.product_details | metafield_tag }}"
           }
         },
         "description": {
           "type": "description",
+          "disabled": true,
           "settings": {}
-        },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
-          }
         }
       },
       "block_order": [
-        "vendor",
         "title",
         "price",
+        "excellent_shop_K3WPxe",
         "variant_picker",
-        "quantity_selector",
-        "buy_buttons",
-        "description",
-        "share"
+        "buy_button_VMXJDi",
+        "richtext_KpNk9F",
+        "description"
       ],
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
-        "media_size": "large",
+        "media_size": "medium",
+        "image_ratio": "square",
         "constrain_to_viewport": true,
         "media_fit": "contain",
-        "gallery_layout": "stacked",
+        "gallery_layout": "thumbnail_slider",
         "mobile_thumbnails": "hide",
         "media_position": "left",
-        "image_zoom": "lightbox",
-        "hide_variants": true,
+        "image_zoom": "hover",
+        "hide_variants": false,
         "enable_video_looping": false,
         "padding_top": 36,
         "padding_bottom": 12
@@ -85,6 +76,10 @@
     "disclosures": {
       "type": "disclosures",
       "settings": {
+        "heading": "Disclosures",
+        "heading_size": "h2",
+        "open_by_default": false,
+        "color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 0
       }
