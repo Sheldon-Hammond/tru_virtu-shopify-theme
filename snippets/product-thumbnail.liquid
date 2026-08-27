@@ -48,6 +48,8 @@
   if image_ratio == 'square'
     assign image_aspect_ratio = 1
     assign image_aspect_ratio_preview = 1
+    assign square_image = true
+    assign image_class = image_class | append: " tw:in-[.square-image]:object-contain!"
   else
     assign image_aspect_ratio = media.aspect_ration | default: 1.0
     assign image_aspect_ratio_preview = media.preview_image.aspect_ratio | default: 1.0
@@ -87,7 +89,7 @@
       {% endcase %}
     </span>
     {%- render 'loading-spinner' -%}
-    <div class="product__media media media--transparent">
+    <div class="product__media media media--transparent{% if square_image %} square-image{% endif %}">
       {{
         media.preview_image
         | image_url: width: 1946

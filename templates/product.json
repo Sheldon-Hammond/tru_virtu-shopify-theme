@@ -26,6 +26,7 @@
         },
         "variant_picker": {
           "type": "variant_picker",
+          "disabled": true,
           "settings": {
             "picker_type": "button",
             "swatch_shape": "circle"
@@ -59,7 +60,7 @@
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
-        "media_size": "medium",
+        "media_size": "large",
         "image_ratio": "square",
         "constrain_to_viewport": true,
         "media_fit": "contain",

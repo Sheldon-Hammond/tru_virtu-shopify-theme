@@ -35,14 +35,20 @@
       assign ratio = 0.8
     elsif card_product.featured_media and media_aspect_ratio == 'adapt'
       assign ratio = card_product.featured_media.aspect_ratio
+    elsif card_product.featured_media and media_aspect_ratio == 'square'
+      assign square_image = true
     endif
     if ratio == 0 or ratio == null
       assign ratio = 1
     endif
+    assign product_badges = card_product.metafields.custom.product_badges.value
   -%}
 
-  <product-component view-event-payload="{{ card_product | standard_event_data: 'view', context: product_view_context | escape }}">
-    <div class="card-wrapper product-card-wrapper underline-links-hover tw:group/quick-add tw:border-1! tw:border-transparent! tw:hover:border-black!">
+  <product-component
+    class="tw:h-full tw:lg:h-auto"
+    view-event-payload="{{ card_product | standard_event_data: 'view', context: product_view_context | escape }}"
+  >
+    <div class="card-wrapper product-card-wrapper underline-links-hover tw:group/quick-add tw:border-1! tw:border-transparent! tw:lg:hover:border-black!">
       <div
         class="
           card card--{{ settings.card_style }}
@@ -56,11 +62,11 @@
         style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
       >
         <div
-          class="card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }} gradient{% endif %}{% if card_product.featured_media or settings.card_style == 'standard' %} ratio{% endif %}"
+          class="tw:bg-white! card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }} gradient{% endif %}{% if card_product.featured_media or settings.card_style == 'standard' %} ratio{% endif %}"
           style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
         >
           {%- if card_product.featured_media -%}
-            <div class="card__media{% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %}">
+            <div class="card__media{% if square_image %} square-image{% endif %} {% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %}">
               <div class="media media--transparent media--hover-effect">
                 {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
                 <img
@@ -76,7 +82,7 @@
                   src="{{ card_product.featured_media | image_url: width: 533 }}"
                   sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
                   alt="{{ card_product.featured_media.alt | escape }}"
-                  class="motion-reduce"
+                  class="motion-reduce tw:in-[.square-image]:object-contain!"
                   {% unless lazy_load == false %}
                     loading="lazy"
                   {% endunless %}
@@ -126,23 +132,22 @@
                 </a>
               </h3>
             </div>
-            <div class="card__badge {{ settings.badge_position }}">
-              {%- if card_product.available == false -%}
-                <span
-                  id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                  class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
-                >
-                  {{- 'products.product.sold_out' | t -}}
-                </span>
-              {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
-                <span
-                  id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                  class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
-                >
-                  {{- 'products.product.on_sale' | t -}}
-                </span>
-              {%- endif -%}
-            </div>
+            {% if product_badges %}
+              <div class="tw:flex tw:gap-[2px] tw:flex-wrap tw:w-3/4 tw:absolute tw:top-4 tw:left-4">
+                {% for badge in product_badges %}
+                  {% liquid
+                    assign badge_text = badge.text
+                    assign badge_font = badge.font_colour
+                    assign badge_bg = badge.background_colour                
+                    assign badge_border = badge.border_colour
+                    if badge_border == blank
+                      assign badge_border = badge_bg
+                    endif
+                  %}
+                  <span class="tw:badge-style" style="color:{{badge_font}}; background: {{ badge_bg }}; border-color: {{ badge_border }}">{{ badge_text }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
           </div>
         </div>
         <div class="card__content">
@@ -295,7 +300,7 @@
           </div>
           {% assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id %}
           {% if quick_add == 'standard' %}
-            <div class="tw:mb-0! tw:invisible tw:group-hover/quick-add:visible standard quick-add no-js-hidden">
+            <div class="tw:mb-0! tw:visible tw:lg:invisible tw:group-hover/quick-add:visible standard quick-add no-js-hidden">
               {%- liquid
                 assign qty_rules = false
                 if card_product.selected_or_first_available_variant.quantity_rule.min > 1 or card_product.selected_or_first_available_variant.quantity_rule.max != null or card_product.selected_or_first_available_variant.quantity_rule.increment > 1
@@ -363,7 +368,7 @@
                       id="{{ product_form_id }}-submit"
                       type="submit"
                       name="add"
-                      class="tw:button-style tw:w-full tw:hover:bg-tru_brown tw:disabled:opacity-50 tw:disabled:hover:bg-black"
+                      class="tw:button-style tw:w-full"
                       aria-haspopup="dialog"
                       aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
                       aria-live="polite"
@@ -394,23 +399,6 @@
               {%- endif -%}
             </div>
           {%- endif -%}
-          <div class="card__badge {{ settings.badge_position }}">
-            {%- if card_product.available == false -%}
-              <span
-                id="Badge-{{ section_id }}-{{ card_product.id }}"
-                class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
-              >
-                {{- 'products.product.sold_out' | t -}}
-              </span>
-            {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
-              <span
-                id="Badge-{{ section_id }}-{{ card_product.id }}"
-                class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
-              >
-                {{- 'products.product.on_sale' | t -}}
-              </span>
-            {%- endif -%}
-          </div>
         </div>
       </div>
     </div>
