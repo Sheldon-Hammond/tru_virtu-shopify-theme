@@ -112,7 +112,7 @@
                 {%- when 'price' -%}
                   <div class="tw:flex tw:flex-col tw:my-[20px]! price-container">
                     <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
-                      {%- render 'PDP_price',
+                      {%- render 'price-custom',
                         product: product,
                         use_variant: true,
                         show_badges: false,

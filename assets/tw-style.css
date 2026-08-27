@@ -27,6 +27,7 @@
     --tw-color-custom_black: #191919;
     --tw-color-border_1: #e9e9e9;
     --tw-color-tru_red: #df514d;
+    --tw-color-tru_brown: #b48154;
     --tw-text-small: 1.4rem;
     --tw-text-heading: 3.2rem;
     --tw-text-sub_heading: 2.4rem;
@@ -236,6 +237,9 @@
   .tw\:mt-\[0px\]\! {
     margin-top: 0px !important;
   }
+  .tw\:mt-\[10px\]\! {
+    margin-top: 10px !important;
+  }
   .tw\:mt-\[20px\] {
     margin-top: 20px;
   }
@@ -365,6 +369,39 @@
   .tw\:rotate-270 {
     rotate: 270deg;
   }
+  .tw\:button-style {
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--tw-color-black);
+    padding-inline: 10px;
+    padding-block: 8px;
+    font-size: var(--tw-text-base);
+    line-height: var(--tw-leading, var(--tw-text-base--line-height));
+    --tw-leading: 1;
+    line-height: 1;
+    --tw-tracking: var(--tw-tracking-normal);
+    letter-spacing: var(--tw-tracking-normal);
+    color: var(--tw-color-white);
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--tw-color-tru_brown);
+      }
+    }
+    &:disabled {
+      cursor: not-allowed;
+    }
+    &:disabled {
+      opacity: 50%;
+    }
+    &:disabled {
+      &:hover {
+        @media (hover: hover) {
+          background-color: var(--tw-color-black);
+        }
+      }
+    }
+  }
   .tw\:cursor-pointer {
     cursor: pointer;
   }
@@ -447,6 +484,10 @@
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
+  .tw\:border-1\! {
+    border-style: var(--tw-border-style) !important;
+    border-width: 1px !important;
+  }
   .tw\:border-2 {
     border-style: var(--tw-border-style);
     border-width: 2px;
@@ -467,6 +508,9 @@
   }
   .tw\:border-custom_black {
     border-color: var(--tw-color-custom_black);
+  }
+  .tw\:border-transparent\! {
+    border-color: transparent !important;
   }
   .tw\:bg-\[\#5fb95f\] {
     background-color: #5fb95f;
@@ -515,6 +559,9 @@
   }
   .tw\:px-\[8px\]\! {
     padding-inline: 8px !important;
+  }
+  .tw\:px-\[10px\]\! {
+    padding-inline: 10px !important;
   }
   .tw\:px-\[14px\] {
     padding-inline: 14px;
@@ -699,6 +746,9 @@
     .tw\:group-hover\/card\:underline:is(:where(.tw\:group\/card):hover *) {
       text-decoration-line: underline;
     }
+    .tw\:group-hover\/quick-add\:visible:is(:where(.tw\:group\/quick-add):hover *) {
+      visibility: visible;
+    }
   }
   .tw\:after\:content-none\!::after {
     content: var(--tw-content);
@@ -709,11 +759,17 @@
     .tw\:hover\:border-black:hover {
       border-color: var(--tw-color-black);
     }
+    .tw\:hover\:border-black\!:hover {
+      border-color: var(--tw-color-black) !important;
+    }
     .tw\:hover\:bg-\[\#509a50\]\!:hover {
       background-color: #509a50 !important;
     }
     .tw\:hover\:bg-custom_black:hover {
       background-color: var(--tw-color-custom_black);
+    }
+    .tw\:hover\:bg-tru_brown:hover {
+      background-color: var(--tw-color-tru_brown);
     }
     .tw\:hover\:bg-white:hover {
       background-color: var(--tw-color-white);
@@ -727,6 +783,34 @@
   }
   .tw\:disabled\:bg-bg_secondary\!:disabled {
     background-color: var(--tw-color-bg_secondary) !important;
+  }
+  .tw\:disabled\:opacity-50:disabled {
+    opacity: 50%;
+  }
+  @media (hover: hover) {
+    .tw\:disabled\:hover\:bg-black:disabled:hover {
+      background-color: var(--tw-color-black);
+    }
+  }
+  :where(:is(.collection-price)) .tw\:in-\[\.collection-price\]\:flex-col\! {
+    flex-direction: column !important;
+  }
+  :where(:is(.collection-price)) .tw\:in-\[\.collection-price\]\:justify-center {
+    justify-content: center;
+  }
+  :where(:is(.collection-price)) .tw\:in-\[\.collection-price\]\:gap-\[5px\]\! {
+    gap: 5px !important;
+  }
+  :where(:is(.collection-price)) .tw\:in-\[\.collection-price\]\:text-base\! {
+    font-size: var(--tw-text-base) !important;
+    line-height: var(--tw-leading, var(--tw-text-base--line-height)) !important;
+  }
+  :where(:is(.collection-price)) .tw\:in-\[\.collection-price\]\:text-small\! {
+    font-size: var(--tw-text-small) !important;
+  }
+  :where(:is(.collection-price)) .tw\:in-\[\.collection-price\]\:leading-none\! {
+    --tw-leading: 1 !important;
+    line-height: 1 !important;
   }
   @media (width < 480px) {
     .tw\:max-mob\:block\! {
@@ -779,6 +863,10 @@
   }
   .tw\:\[\&_ul\]\:list-disc ul {
     list-style-type: disc;
+  }
+  .collection-price .tw\:\[\.collection-price_\&\]\:text-base\! {
+    font-size: var(--tw-text-base) !important;
+    line-height: var(--tw-leading, var(--tw-text-base--line-height)) !important;
   }
 }
 @layer theme, base, components, utilities;
@@ -932,20 +1020,20 @@
   }
 }
 @layer utilities;
+@property --tw-leading {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-tracking {
+  syntax: "*";
+  inherits: false;
+}
 @property --tw-border-style {
   syntax: "*";
   inherits: false;
   initial-value: solid;
 }
-@property --tw-leading {
-  syntax: "*";
-  inherits: false;
-}
 @property --tw-font-weight {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-tracking {
   syntax: "*";
   inherits: false;
 }
@@ -961,10 +1049,10 @@
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
-      --tw-border-style: solid;
       --tw-leading: initial;
-      --tw-font-weight: initial;
       --tw-tracking: initial;
+      --tw-border-style: solid;
+      --tw-font-weight: initial;
       --tw-duration: initial;
       --tw-content: "";
     }
