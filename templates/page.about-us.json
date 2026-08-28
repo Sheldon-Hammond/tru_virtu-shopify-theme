@@ -1,0 +1,105 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_banner_DWwa8W": {
+      "type": "image-banner",
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/shutterstock_19418696117RKyRI2uhwrIO_1280x1280_132e379f-4392-471d-aba4-3eb437016c9b.jpg",
+        "image_overlay_opacity": 0,
+        "full_width": false,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": true
+      }
+    },
+    "custom_liquid_9h4dz4": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "{% render 'about_us-1' %}",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "multirow_E9WdkR": {
+      "type": "multirow",
+      "blocks": {
+        "row_ETNdnQ": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/NordbahnBild1QflWEkRJ8naw.jpg",
+            "caption": "",
+            "heading": "Made in Germany",
+            "text": "<p>All CLICK & SLIDE products are exclusively developed and manufactured in Germany. In close collaboration with more than 20 suppliers, our patented card cases and wallets are produced at our Berlin location in partnership with a workshop for people with disabilities. We are particularly proud that it is people with disabilities who, working together with skilled employees, successfully handcraft these technically sophisticated card cases and wallets while adhering to social and ethical standards and working conditions, and meeting high quality requirements.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "row_aMTccm": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/BildLeatherxWNGYIxwkqw8R.jpg",
+            "caption": "",
+            "heading": "Italian leather",
+            "text": "<p>All our leathers are carefully selected and sourced from tanneries in Italy. These tanneries are mostly family businesses with a long tradition, having developed enormous skills and expertise in processing this natural product until it becomes the trendy and elegant leather you find in our products.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_ETNdnQ",
+        "row_aMTccm"
+      ],
+      "custom_css": [
+        ".image-with-text__heading.h2.rte{font-weight: bold; font-size: 18px;}"
+      ],
+      "name": "t:sections.multirow.presets.name",
+      "settings": {
+        "image_height": "large",
+        "desktop_image_width": "medium",
+        "image_layout": "alternate-right",
+        "heading_size": "h2",
+        "text_style": "body",
+        "button_style": "text",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "row_color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_DWwa8W",
+    "custom_liquid_9h4dz4",
+    "multirow_E9WdkR"
+  ]
+}

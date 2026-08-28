@@ -27,12 +27,12 @@
             {% when 'product' %}
               {% if current_collection %}
                 <li>
-                  <div class=" tw:w-4 tw:h-4 tw:flex tw:items-center tw:rotate-270 tw:[&_.icon-caret_path]:stroke-[0.5]">
+                  <div class="tw:w-4 tw:h-4 tw:flex tw:items-center tw:rotate-270 tw:[&_.icon-caret_path]:stroke-[0.5]">
                     {{- 'icon-caret.svg' | inline_asset_content -}}
                   </div>
                 </li>
                 <li>
-                  <a href="{{ current_collection.url }}">
+                  <a href="{{ current_collection.url }}" class="tw:underline tw:underline-offset-[0.3rem] tw:hover:no-underline">
                     {{ current_collection.title }}
                   </a>
                 </li>

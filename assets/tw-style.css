@@ -8,6 +8,10 @@
       "Segoe UI Symbol", "Noto Color Emoji";
     --tw-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --tw-color-blue-400: oklch(70.7% 0.165 254.624);
+    --tw-color-blue-600: oklch(54.6% 0.245 262.881);
+    --tw-color-blue-700: oklch(48.8% 0.243 264.376);
+    --tw-color-blue-800: oklch(42.4% 0.199 265.638);
     --tw-color-black: #000;
     --tw-color-white: #fff;
     --tw-spacing: 0.25rem;
@@ -255,6 +259,9 @@
   .tw\:mt-\[32px\] {
     margin-top: 32px;
   }
+  .tw\:mt-\[40px\] {
+    margin-top: 40px;
+  }
   .tw\:mt-\[50px\] {
     margin-top: 50px;
   }
@@ -272,6 +279,12 @@
   }
   .tw\:mb-\[32px\] {
     margin-bottom: 32px;
+  }
+  .tw\:mb-\[40px\] {
+    margin-bottom: 40px;
+  }
+  .tw\:mb-\[50px\] {
+    margin-bottom: 50px;
   }
   .tw\:ml-4 {
     margin-left: calc(var(--tw-spacing) * 4);
@@ -300,11 +313,20 @@
   .tw\:aspect-square {
     aspect-ratio: 1 / 1;
   }
+  .tw\:h-1\/2 {
+    height: calc(1 / 2 * 100%);
+  }
+  .tw\:h-1\/3 {
+    height: calc(1 / 3 * 100%);
+  }
   .tw\:h-4 {
     height: calc(var(--tw-spacing) * 4);
   }
   .tw\:h-10 {
     height: calc(var(--tw-spacing) * 10);
+  }
+  .tw\:h-400 {
+    height: calc(var(--tw-spacing) * 400);
   }
   .tw\:h-\[12px\] {
     height: 12px;
@@ -315,6 +337,15 @@
   .tw\:h-\[35px\] {
     height: 35px;
   }
+  .tw\:h-\[400pc\] {
+    height: 400pc;
+  }
+  .tw\:h-\[400px\] {
+    height: 400px;
+  }
+  .tw\:h-\[700px\] {
+    height: 700px;
+  }
   .tw\:h-auto {
     height: auto;
   }
@@ -324,11 +355,20 @@
   .tw\:min-h-20 {
     min-height: calc(var(--tw-spacing) * 20);
   }
+  .tw\:min-h-100 {
+    min-height: calc(var(--tw-spacing) * 100);
+  }
+  .tw\:min-h-140 {
+    min-height: calc(var(--tw-spacing) * 140);
+  }
   .tw\:min-h-160 {
     min-height: calc(var(--tw-spacing) * 160);
   }
   .tw\:min-h-\[35px\]\! {
     min-height: 35px !important;
+  }
+  .tw\:min-h-\[400px\] {
+    min-height: 400px;
   }
   .tw\:w-3\/4 {
     width: calc(3 / 4 * 100%);
@@ -356,6 +396,18 @@
   }
   .tw\:w-full {
     width: 100%;
+  }
+  .tw\:max-w-1\/2 {
+    max-width: calc(1 / 2 * 100%);
+  }
+  .tw\:max-w-2\/5 {
+    max-width: calc(2 / 5 * 100%);
+  }
+  .tw\:max-w-3\/5 {
+    max-width: calc(3 / 5 * 100%);
+  }
+  .tw\:max-w-4\/5 {
+    max-width: calc(4 / 5 * 100%);
   }
   .tw\:max-w-none\! {
     max-width: none !important;
@@ -732,6 +784,15 @@
   .tw\:text-black\! {
     color: var(--tw-color-black) !important;
   }
+  .tw\:text-blue-600 {
+    color: var(--tw-color-blue-600);
+  }
+  .tw\:text-blue-700 {
+    color: var(--tw-color-blue-700);
+  }
+  .tw\:text-blue-800 {
+    color: var(--tw-color-blue-800);
+  }
   .tw\:text-custom_black\! {
     color: var(--tw-color-custom_black) !important;
   }
@@ -794,6 +855,9 @@
     .tw\:hover\:bg-white:hover {
       background-color: var(--tw-color-white);
     }
+    .tw\:hover\:text-blue-400:hover {
+      color: var(--tw-color-blue-400);
+    }
     .tw\:hover\:text-white:hover {
       color: var(--tw-color-white);
     }
@@ -853,8 +917,23 @@
     .tw\:lg\:invisible {
       visibility: hidden;
     }
+    .tw\:lg\:mx-auto {
+      margin-inline: auto;
+    }
+    .tw\:lg\:h-\[650px\] {
+      height: 650px;
+    }
+    .tw\:lg\:h-\[700px\] {
+      height: 700px;
+    }
     .tw\:lg\:h-auto {
       height: auto;
+    }
+    .tw\:lg\:max-w-4\/5 {
+      max-width: calc(4 / 5 * 100%);
+    }
+    .tw\:lg\:object-cover {
+      object-fit: cover;
     }
     @media (hover: hover) {
       .tw\:lg\:hover\:border-black\!:hover {

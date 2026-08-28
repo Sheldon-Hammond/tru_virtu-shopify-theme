@@ -1,0 +1,74 @@
+<div class="page-width">
+  <div class="tw:w-full tw:h-[400px] tw:mb-[40px] content-image">
+    {% assign image_object = images['about_us-banner.jpg'] %}
+    {{ image_object | image_url: width: image_object.width | image_tag: class: 'tw:w-full tw:h-full tw:object-cover' }}
+  </div>
+  <div class="content-text">
+    <p class="tw:mb-[20px]">
+      <strong>TRU VIRTU®</strong> is a German premium accessories brand based in Hamburg / Germany and has been active
+      in the international travel and fashion accessories industry since 2009.
+    </p>
+    <p class="tw:mb-[20px]">
+      Since our launch in 2009, <strong>TRU VIRTU®</strong> wallets have been available in more than 50 countries in
+      selective points of sale at airports, duty free shops and in in-flight sales at leading airlines.
+    </p>
+    <p class="tw:mb-[20px]">
+      The name <strong>TRU VIRTU®</strong> comes from the Latin. It stands for ‘masterpiece’ and genuine craftsmanship.
+      The name is an expression of our passion for innovative and high-quality wallets that are made exclusively by hand
+      in Germany.
+    </p>
+  </div>
+  <div class="tw:lg:mx-auto tw:lg:max-w-4/5 content-image">
+    {% assign image_object = images['about_us-awards.jpg'] %}
+    {{ image_object | image_url: width: image_object.width | image_tag }}
+  </div>
+  <div class="content-text tw:mb-[40px]">
+    <p class="tw:mb-[20px]">
+      We are proud to announce that <strong>TRU VIRTU® has been a finalist</strong> for
+      <strong>Best Fashion Accessory</strong> at the Asia Pacific <strong>Travel Retail Awards 2026.</strong> The Travel
+      Retail Awards are the first and only awards in the duty-free and travel retail industry, where thousands of
+      travelers vote on each entry. The Global Travel Retail Awards reflect consumer buying sentiment worldwide.
+      <a
+        href="https://www.flipsnack.com/dolphininnovations/dolphin-innovations-gmbh-click-slide-consumer-insights/full-view.html"
+        rel="nofollow noopener"
+        class="tw:underline tw:text-blue-700 tw:hover:text-blue-400"
+      >
+        <strong>Consumer Insights</strong>
+      </a>
+    </p>
+
+    <p class="">
+      We are also proud that <strong>TRU VIRTU®</strong> has become a finalist at the
+      <strong>2025 Global Frontier Awards.</strong>
+    </p>
+    <a
+      href="https://www.flipsnack.com/dolphininnovations/tru-virtu-awards-overview/full-view.html"
+      rel="nofollow noopener"
+      class="tw:underline tw:text-blue-700 tw:hover:text-blue-400"
+    >
+      <strong>View all awards</strong>
+    </a>
+  </div>
+  <div class="tw:w-full tw:h-auto tw:mb-[20px] content-image">
+    {% assign image_object = images['known_from.jpg'] %}
+    {{
+      image_object
+      | image_url: width: image_object.width
+      | image_tag: class: 'tw:w-full tw:h-full tw:object-contain'
+    }}
+  </div>
+  <div class="content-text">
+    <p class="tw:mb-[20px]">
+      <strong>TRU VIRTU®</strong> is not only the international market leader in the fashion and accessories segment,
+      but also a leader in sustainable product collections and developments.
+    </p>
+  </div>
+  <div class="tw:w-full tw:h-auto tw:mb-[20px] content-image">
+    {% assign image_object = images['customer_feedback.jpg'] %}
+    {{
+      image_object
+      | image_url: width: image_object.width
+      | image_tag: class: 'tw:w-full tw:h-full tw:object-contain'
+    }}
+  </div>
+</div>
