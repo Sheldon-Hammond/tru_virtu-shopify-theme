@@ -31,15 +31,15 @@
 >
   <div class="page-width">
     <div class="title-wrapper-with-link">
-      <h1 class="title title--primary">{{ 'sections.cart.title' | t }}</h1>
-      <a href="{{ routes.all_products_collection_url }}" class="underlined-link">
+      <h1 class="tw:text-heading! tw:font-bold! title title--primary">{{ 'sections.cart.title' | t }}</h1>
+      <a href="{{ routes.all_products_collection_url }}" class="tw:underline! tw:hover:no-underline! underlined-link">
         {{- 'general.continue_shopping' | t -}}
       </a>
     </div>
 
-    <div class="cart__warnings">
+    <div class="tw:py-[7rem]! cart__warnings">
       <h1 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h1>
-      <a href="{{ routes.all_products_collection_url }}" class="button">
+      <a href="{{ routes.all_products_collection_url }}" class="tw:button-style tw:px-[20px] tw:hover:bg-black">
         {{ 'general.continue_shopping' | t }}
       </a>
 
@@ -112,7 +112,7 @@
                       {%- endif -%}
 
                       <div class="cart-item__title">
-                        <a href="{{ item.url }}" class="cart-item__name h4 break">{{ item.product.title | escape }}</a>
+                        <a href="{{ item.url }}" class="tw:text-base! tw:font-bold! tw:leading-[1.2] cart-item__name h4 break">{{ item.product.title | escape }}</a>
                         {%- assign cart_disclosure_modal_id = 'CartDisclosureModal-cart-' | append: item.key | replace: ':', '-' -%}
                         {%- render 'cart-disclosure-indicator',
                           product: item.product,
@@ -189,7 +189,7 @@
 
                     <td class="cart-item__totals right medium-hide large-up-hide">
                       {%- render 'loading-spinner' -%}
-                      <div class="cart-item__price-wrapper">
+                      <div class="tw:text-base! tw:font-bold! tw:tracking-normal cart-item__price-wrapper">
                         {%- if item.original_line_price != item.final_line_price -%}
                           <dl class="cart-item__discounted-prices">
                             <dt class="visually-hidden">
@@ -245,10 +245,10 @@
                                 {{- 'icon-info.svg' | inline_asset_content -}}
                               </button>
                             {%- endif -%}
-                            <quantity-input class="quantity cart-quantity">
+                            <quantity-input class="tw:flex tw:bg-bg_grey tw:h-[35px] quantity_button cart-quantity">
                               {% assign can_update_quantity = item.instructions.can_update_quantity | default: true %}
                               <button
-                                class="quantity__button"
+                                class="tw:w-[35px]! quantity__button"
                                 name="minus"
                                 type="button"
                                 {% if can_update_quantity == false %}
@@ -263,7 +263,7 @@
                                 </span>
                               </button>
                               <input
-                                class="quantity__input"
+                                class="tw:w-[35px]! tw:font-bold! tw:text-small! quantity__input"
                                 data-quantity-variant-id="{{ item.variant.id }}"
                                 data-quantity-line-key="{{ item.key }}"
                                 type="number"
@@ -286,7 +286,7 @@
                                 {% endif %}
                               >
                               <button
-                                class="quantity__button"
+                                class="tw:w-[35px]! quantity__button"
                                 name="plus"
                                 type="button"
                                 {% if can_update_quantity == false %}
@@ -417,26 +417,26 @@
 
                     <td class="cart-item__totals right small-hide">
                       {%- render 'loading-spinner' -%}
-                      <div class="cart-item__price-wrapper">
+                      <div class="tw:text-base! tw:font-bold! cart-item__price-wrapper">
                         {%- if item.original_line_price != item.final_line_price -%}
                           <dl class="cart-item__discounted-prices">
                             <dt class="visually-hidden">
                               {{ 'products.product.price.regular_price' | t }}
                             </dt>
                             <dd>
-                              <s class="cart-item__old-price price price--end">
+                              <s class="tw:tracking-normal! cart-item__old-price price price--end">
                                 {{ item.original_line_price | money }}
                               </s>
                             </dd>
                             <dt class="visually-hidden">
                               {{ 'products.product.price.sale_price' | t }}
                             </dt>
-                            <dd class="price price--end">
+                            <dd class="tw:tracking-normal! price price--end">
                               {{ item.final_line_price | money }}
                             </dd>
                           </dl>
                         {%- else -%}
-                          <span class="price price--end">
+                          <span class="tw:tracking-normal! price price--end">
                             {{ item.original_line_price | money }}
                           </span>
                         {%- endif -%}

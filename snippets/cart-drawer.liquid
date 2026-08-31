@@ -7,7 +7,9 @@
 
 {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
-
+{% liquid
+  assign image_aspect_ratio = settings.cart_image_ratio
+%}
 <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
 
@@ -42,7 +44,7 @@
                   {{- 'icon-close.svg' | inline_asset_content -}}
                 </span>
               </button>
-              <a href="{{ routes.all_products_collection_url }}" class="button">
+              <a href="{{ routes.all_products_collection_url }}" class="tw:button-style tw:hover:bg-black tw:px-[20px]">
                 {{ 'general.continue_shopping' | t }}
               </a>
 
@@ -98,7 +100,7 @@
                       </th>
                       <th
                         id="CartDrawer-ColumnProduct"
-                        class="caption-with-letter-spacing"
+                        class="tw:w-full! caption-with-letter-spacing"
                         scope="col"
                         role="columnheader"
                       >
@@ -136,14 +138,16 @@
                           {% if item.image %}
                             {% comment %} Leave empty space due to a:empty CSS display: none rule {% endcomment %}
                             <a href="{{ item.url }}" class="cart-item__link" tabindex="-1" aria-hidden="true"> </a>
-                            <img
-                              class="cart-item__image"
-                              src="{{ item.image | image_url: width: 300 }}"
-                              alt="{{ item.image.alt | escape }}"
-                              loading="lazy"
-                              width="150"
-                              height="{{ 150 | divided_by: item.image.aspect_ratio | ceil }}"
-                            >
+                            <div class="tw:min-w-[120px]{% if image_aspect_ratio == 'square' %} tw:h-[120px]{% endif %}">
+                              <img
+                                class="tw:object-contain tw:h-full! cart-item__image"
+                                src="{{ item.image | image_url: width: 300 }}"
+                                alt="{{ item.image.alt | escape }}"
+                                loading="lazy"
+                                width="150"
+                                height="{{ 150 | divided_by: item.image.aspect_ratio | ceil }}"
+                              >
+                            </div>
                           {% endif %}
                         </td>
 
@@ -153,10 +157,13 @@
                           {%- endif -%}
 
                           <div class="cart-item__title">
-                            <a href="{{ item.url }}" class="cart-item__name h4 break">
+                            <a href="{{ item.url }}" class="tw:text-base! tw:font-bold! tw:leading-[1.2]! cart-item__name h4 break">
                               {{- item.product.title | escape -}}
                             </a>
-                            {%- assign cart_disclosure_modal_id = 'CartDisclosureModal-drawer-' | append: item.key | replace: ':', '-' -%}
+                            {%- assign cart_disclosure_modal_id = 'CartDisclosureModal-drawer-'
+                              | append: item.key
+                              | replace: ':', '-'
+                            -%}
                             {%- render 'cart-disclosure-indicator',
                               product: item.product,
                               modal_id: cart_disclosure_modal_id
@@ -244,24 +251,24 @@
 
                         <td class="cart-item__totals right" role="cell" headers="CartDrawer-ColumnTotal">
                           {%- render 'loading-spinner' -%}
-                          <div class="cart-item__price-wrapper">
+                          <div class="tw:text-base! tw:leading-[1.2]! tw:font-bold! cart-item__price-wrapper">
                             {%- if item.original_line_price != item.final_line_price -%}
                               <div class="cart-item__discounted-prices">
                                 <span class="visually-hidden">
                                   {{ 'products.product.price.regular_price' | t }}
                                 </span>
-                                <s class="cart-item__old-price price price--end">
+                                <s class="tw:tracking-normal cart-item__old-price price price--end">
                                   {{ item.original_line_price | money }}
                                 </s>
                                 <span class="visually-hidden">
                                   {{ 'products.product.price.sale_price' | t }}
                                 </span>
-                                <span class="price price--end">
+                                <span class="tw:tracking-normal! price price--end">
                                   {{ item.final_line_price | money }}
                                 </span>
                               </div>
                             {%- else -%}
-                              <span class="price price--end">
+                              <span class="tw:tracking-normal! price price--end">
                                 {{ item.original_line_price | money }}
                               </span>
                             {%- endif -%}
@@ -293,9 +300,9 @@
                           <quantity-popover>
                             <div class="cart-item__quantity-wrapper quantity-popover-wrapper">
                               <div class="quantity-popover-container{% if has_qty_rules or has_vol_pricing %} quantity-popover-container--hover{% endif %}">
-                                <quantity-input class="quantity cart-quantity">
+                                <quantity-input class="tw:flex tw:bg-bg_grey tw:h-[35px] quantity_button cart-quantity">
                                   <button
-                                    class="quantity__button"
+                                    class="tw:w-[35px]! quantity__button"
                                     name="minus"
                                     type="button"
                                     {% if item.instructions and item.instructions.can_update_quantity == false %}
@@ -314,7 +321,7 @@
                                     </span>
                                   </button>
                                   <input
-                                    class="quantity__input"
+                                    class="tw:w-[35px]! tw:font-bold! tw:text-small! quantity__input"
                                     type="number"
                                     data-quantity-variant-id="{{ item.variant.id }}"
                                     data-quantity-line-key="{{ item.key }}"
@@ -337,7 +344,7 @@
                                     {% endif %}
                                   >
                                   <button
-                                    class="quantity__button"
+                                    class="tw:w-[35px]! quantity__button"
                                     name="plus"
                                     type="button"
                                     {% if item.instructions and item.instructions.can_update_quantity == false %}
@@ -528,7 +535,7 @@
 
           <div class="totals" role="status">
             <h2 class="totals__total">{{ 'sections.cart.estimated_total' | t }}</h2>
-            <p class="totals__total-value">{{ cart.total_price | money_with_currency }}</p>
+            <p class="tw:font-bold tw:tracking-normal! totals__total-value">{{ cart.total_price | money_with_currency }}</p>
           </div>
 
           <small class="tax-note caption-large rte">
@@ -578,7 +585,7 @@
           <button
             type="submit"
             id="CartDrawer-Checkout"
-            class="cart__checkout-button button"
+            class="tw:button-style tw:bg-tru_green tw:hover:bg-tru_green_hover cart__checkout-button"
             name="checkout"
             form="CartDrawer-Form"
             {% if cart == empty %}

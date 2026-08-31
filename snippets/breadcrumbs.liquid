@@ -4,7 +4,7 @@
   endif
 %}
 
-{% unless request.page_type == 'index' %}
+{% unless request.page_type == 'index' or request.page_type == 'cart' %}
   <div class="tw:bg-[#F8F8F8] tw:border-solid tw:border-b tw:border-border_1! breadcrumb_container">
     <div class="page-width">
       <nav class="tw:text-small tw:py-4" aria-label="Breadcrumb">

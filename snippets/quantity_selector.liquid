@@ -14,8 +14,8 @@
       {{- 'products.product.quantity.label' | t -}}
     {%- endif -%}
   </span>
-  {% comment %} <label
-    class="quantity__label form__label"
+  <label
+    class="quantity__label form__label tw:hidden!"
     for="Quantity-{{ section.id }}"
     aria-labelledby="quantity-label-{{ section.id }}"
   >
@@ -28,7 +28,7 @@
         )</span
       >
     </span>
-  </label> {% endcomment %}
+  </label>
   <div class="price-per-item__container">
     <quantity-input class="tw:flex tw:bg-bg_grey tw:h-[35px] quantity_button" data-url="{{ product.url }}" data-section="{{ section.id }}">
       <button class="quantity__button" name="minus" type="button">

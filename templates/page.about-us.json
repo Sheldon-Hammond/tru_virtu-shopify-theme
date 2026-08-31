@@ -17,24 +17,6 @@
         "padding_bottom": 28
       }
     },
-    "image_banner_DWwa8W": {
-      "type": "image-banner",
-      "name": "t:sections.image-banner.presets.name",
-      "settings": {
-        "image": "shopify://shop_images/shutterstock_19418696117RKyRI2uhwrIO_1280x1280_132e379f-4392-471d-aba4-3eb437016c9b.jpg",
-        "image_overlay_opacity": 0,
-        "full_width": false,
-        "image_height": "medium",
-        "image_behavior": "none",
-        "desktop_content_position": "middle-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": true,
-        "color_scheme": "",
-        "stack_images_on_mobile": true,
-        "mobile_content_alignment": "center",
-        "show_text_below": true
-      }
-    },
     "custom_liquid_9h4dz4": {
       "type": "custom-liquid",
       "name": "t:sections.custom-liquid.presets.name",
@@ -76,7 +58,7 @@
         "row_aMTccm"
       ],
       "custom_css": [
-        ".image-with-text__heading.h2.rte{font-weight: bold; font-size: 18px;}"
+        ".image-with-text__heading.h2.rte {font-weight: bold; font-size: 18px;}"
       ],
       "name": "t:sections.multirow.presets.name",
       "settings": {
@@ -94,12 +76,22 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "custom_liquid_4NgpQj": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "{% render 'about_us-2' %}",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
     "main",
-    "image_banner_DWwa8W",
     "custom_liquid_9h4dz4",
-    "multirow_E9WdkR"
+    "multirow_E9WdkR",
+    "custom_liquid_4NgpQj"
   ]
 }

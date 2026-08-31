@@ -41,7 +41,14 @@
     if ratio == 0 or ratio == null
       assign ratio = 1
     endif
+
+    assign show_badges = false
     assign product_badges = card_product.metafields.custom.product_badges.value
+
+    if product_badges != blank or card_product.available == false
+       assign show_badges = true
+    endif
+
   -%}
 
   <product-component
@@ -132,8 +139,21 @@
                 </a>
               </h3>
             </div>
-            {% if product_badges %}
+            {% if show_badges == true %}
               <div class="tw:flex tw:gap-[2px] tw:flex-wrap tw:w-3/4 tw:absolute tw:top-4 tw:left-4">
+                {% if card_product.available == false %}
+                  {% liquid
+                    assign badge = metaobjects.product_badges.sold-out
+                    assign badge_text = badge.text
+                    assign badge_font = badge.font_colour
+                    assign badge_bg = badge.background_colour                
+                    assign badge_border = badge.border_colour
+                    if badge_border == blank
+                      assign badge_border = badge_bg
+                    endif
+                  %}
+                  <div class="tw:badge-style" style="color:{{badge_font}}; background: {{ badge_bg }}; border-color: {{ badge_border }}">{{ badge_text }}</div>
+                {% endif %}
                 {% for badge in product_badges %}
                   {% liquid
                     assign badge_text = badge.text

@@ -20,6 +20,14 @@
   Usage:
   {% render 'card-product', show_vendor: section.settings.show_vendor %}
 {% endcomment %}
+{% liquid
+  assign show_badges = false
+  assign product_badges = card_product.metafields.custom.product_badges.value
+
+  if product_badges != blank or card_product.available == false
+    assign show_badges = true
+  endif
+%}
 {%- if card_product and card_product != empty -%}
   <a
     href="{{ card_product.url }}"
@@ -30,24 +38,46 @@
     <div class="card-wrapper product-card-wrapper tw:flex tw:flex-col tw:gap-6 tw:py-4">
       <div class="tw:aspect-square tw:w-full tw:h-full tw:relative">
         {% if card_product.featured_media != null %}
-          <div class="tw:absolute tw:top-2 tw:left-2 tw:z-3 tw:flex tw:flex-col tw:items-start tw:gap-2">
-            {%- if card_product.available == false -%}
-              <div
-                id="Badge-{{ section_id }}-{{ card_product.id }}"
-                class="tw:text-[12px] tw:leading-none tw:text-white tw:px-2 tw:pb-1 tw:pt-[4px] tw:bg-[#df514d] tw:rounded"
-              >
-                {{- 'products.product.sold_out' | t -}}
-              </div>
+          {% if show_badges == true %}
+            <div class="tw:absolute tw:top-2 tw:left-2 tw:z-3 tw:flex tw:flex-col tw:items-start tw:gap-2">
+              {% if card_product.available == false %}
+                {% liquid
+                  assign badge = metaobjects.product_badges['sold-out']
+                  assign badge_text = badge.text
+                  assign badge_font = badge.font_colour
+                  assign badge_bg = badge.background_colour
+                  assign badge_border = badge.border_colour
+                  if badge_border == blank
+                    assign badge_border = badge_bg
+                  endif
+                %}
+                <div
+                  class="tw:badge-style"
+                  style="color:{{badge_font}}; background: {{ badge_bg }}; border-color: {{ badge_border }}"
+                >
+                  {{ badge_text }}
+                </div>
+              {% endif %}
+              {% for badge in product_badges %}
+                {% liquid
+                  assign badge_text = badge.text
+                  assign badge_font = badge.font_colour
+                  assign badge_bg = badge.background_colour
+                  assign badge_border = badge.border_colour
+                  if badge_border == blank
+                    assign badge_border = badge_bg
+                  endif
+                %}
+                <span
+                  class="tw:badge-style"
+                  style="color:{{badge_font}}; background: {{ badge_bg }}; border-color: {{ badge_border }}"
+                >
+                  {{- badge_text -}}
+                </span>
+              {% endfor %}
+            </div>
+          {% endif %}
 
-            {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
-              <div
-                id="Badge-{{ section_id }}-{{ card_product.id }}"
-                class="tw:text-[12px] tw:leading-none tw:text-white tw:px-2 tw:pb-1 tw:pt-[4px] tw:bg-[#5fb95f] tw:rounded"
-              >
-                {{- 'products.product.on_sale' | t -}}
-              </div>
-            {%- endif -%}
-          </div>
           <img
             srcset="
               {%- if card_product.featured_media.width >= 165 -%}{{ card_product.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
@@ -61,7 +91,7 @@
             src="{{ card_product.featured_media | image_url: width: 533 }}"
             sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
             alt="{{ card_product.featured_media.alt | escape }}"
-            class="tw:w-full tw:h-full tw:object-cover tw:block tw:relative tw:z-2"
+            class="tw:w-full tw:h-full tw:object-contain tw:block tw:relative tw:z-2"
             {% unless lazy_load == false %}
               loading="lazy"
             {% endunless %}
@@ -74,11 +104,11 @@
         {% endif %}
       </div>
       <div class="tw:flex tw:flex-col tw:gap-4 tw:items-center tw:justify-center">
-        <div class="tw:text-[14px]! tw:leading-none! tw:text-center tw:group-hover/card:underline">
+        <div class="tw:text-[14px]! tw:leading-[1.2]! tw:text-center tw:group-hover/card:underline">
           {{ card_product.title | escape }}
         </div>
         <div class="collection_slider-information">
-          {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+          {% render 'price-custom', product: card_product, price_class: 'collection-price', show_compare_at_price: true %}
         </div>
       </div>
     </div>
