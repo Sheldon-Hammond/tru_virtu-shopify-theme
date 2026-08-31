@@ -593,3 +593,26 @@
     clip-path: polygon(var(--shape--blob-5));
   }
 }
+
+
+.image_hover-zooom{
+  display: block;
+  max-width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  /* transition: all 0.5s ease; */
+}
+
+.image_hover-zooom:hover{
+    transform: scale(2);
+}
+
+.image_zoom{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

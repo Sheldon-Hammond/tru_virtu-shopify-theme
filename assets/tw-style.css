@@ -8,6 +8,8 @@
       "Segoe UI Symbol", "Noto Color Emoji";
     --tw-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --tw-color-amber-400: oklch(82.8% 0.189 84.429);
+    --tw-color-green-400: oklch(79.2% 0.209 151.711);
     --tw-color-blue-400: oklch(70.7% 0.165 254.624);
     --tw-color-blue-700: oklch(48.8% 0.243 264.376);
     --tw-color-black: #000;
@@ -302,6 +304,9 @@
   .tw\:block {
     display: block;
   }
+  .tw\:block\! {
+    display: block !important;
+  }
   .tw\:flex {
     display: flex;
   }
@@ -416,11 +421,17 @@
   .tw\:grow {
     flex-grow: 1;
   }
+  .tw\:origin-center {
+    transform-origin: center;
+  }
   .tw\:rotate-90 {
     rotate: 90deg;
   }
   .tw\:rotate-270 {
     rotate: 270deg;
+  }
+  .tw\:transform-gpu {
+    transform: translateZ(0) var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
   }
   .tw\:button-style {
     cursor: pointer;
@@ -527,6 +538,9 @@
   .tw\:gap-\[25px\] {
     gap: 25px;
   }
+  .tw\:overflow-hidden {
+    overflow: hidden;
+  }
   .tw\:badge-style {
     border-radius: 0.25rem;
     border-style: var(--tw-border-style);
@@ -581,6 +595,9 @@
   .tw\:bg-\[\#F8F8F8\] {
     background-color: #F8F8F8;
   }
+  .tw\:bg-amber-400 {
+    background-color: var(--tw-color-amber-400);
+  }
   .tw\:bg-bg_grey {
     background-color: var(--tw-color-bg_grey);
   }
@@ -592,6 +609,9 @@
   }
   .tw\:bg-black {
     background-color: var(--tw-color-black);
+  }
+  .tw\:bg-green-400 {
+    background-color: var(--tw-color-green-400);
   }
   .tw\:bg-tru_brown {
     background-color: var(--tw-color-tru_brown);
@@ -829,8 +849,15 @@
     --tw-ease: var(--tw-ease-in-out);
     transition-timing-function: var(--tw-ease-in-out);
   }
+  .tw\:ease-linear {
+    --tw-ease: linear;
+    transition-timing-function: linear;
+  }
   .tw\:\[grid-area\:navigation\] {
     grid-area: navigation;
+  }
+  .tw\:ease-initial {
+    --tw-ease: initial;
   }
   @media (hover: hover) {
     .tw\:group-hover\:visible:is(:where(.tw\:group):hover *) {
@@ -841,6 +868,15 @@
     }
     .tw\:group-hover\/card\:underline:is(:where(.tw\:group\/card):hover *) {
       text-decoration-line: underline;
+    }
+    .tw\:group-hover\/product\:scale-110:is(:where(.tw\:group\/product):hover *) {
+      --tw-scale-x: 110%;
+      --tw-scale-y: 110%;
+      --tw-scale-z: 110%;
+      scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+    .tw\:group-hover\/product\:scale-\[1\.001\]:is(:where(.tw\:group\/product):hover *) {
+      scale: 1.001;
     }
     .tw\:group-hover\/product\:scale-\[1\.1\]\!:is(:where(.tw\:group\/product):hover *) {
       scale: 1.1 !important;
@@ -853,6 +889,9 @@
     }
     .tw\:group-hover\/product\:scale-\[1\.5\]\!:is(:where(.tw\:group\/product):hover *) {
       scale: 1.5 !important;
+    }
+    .tw\:group-hover\/product\:scale-\[2\.05\]\!:is(:where(.tw\:group\/product):hover *) {
+      scale: 2.05 !important;
     }
     .tw\:group-hover\/quick-add\:visible:is(:where(.tw\:group\/quick-add):hover *) {
       visibility: visible;
@@ -1173,6 +1212,21 @@
   syntax: "*";
   inherits: false;
 }
+@property --tw-scale-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
 @property --tw-content {
   syntax: "*";
   initial-value: "";
@@ -1187,6 +1241,9 @@
       --tw-font-weight: initial;
       --tw-duration: initial;
       --tw-ease: initial;
+      --tw-scale-x: 1;
+      --tw-scale-y: 1;
+      --tw-scale-z: 1;
       --tw-content: "";
     }
   }
