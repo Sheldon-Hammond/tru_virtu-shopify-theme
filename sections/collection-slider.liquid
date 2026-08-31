@@ -32,7 +32,7 @@
       <div class="tw:w-full swiper collection-slider-swiper-{{ section.id }}">
         <div class="swiper-wrapper">
           {% for product in selected_collection.products %}
-            <div class="swiper-slide">
+            <div class="swiper-slide tw:group/product">
               {% render 'collection-slider-card',
                 card_product: product,
                 lazy_load: true,

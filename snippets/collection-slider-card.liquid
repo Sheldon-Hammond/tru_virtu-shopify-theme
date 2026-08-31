@@ -91,7 +91,7 @@
             src="{{ card_product.featured_media | image_url: width: 533 }}"
             sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
             alt="{{ card_product.featured_media.alt | escape }}"
-            class="tw:w-full tw:h-full tw:object-contain tw:block tw:relative tw:z-2"
+            class="tw:group-hover/product:scale-[1.05]! tw:transition-transform tw:ease tw:duration-500 tw:w-full tw:h-full tw:object-contain tw:block tw:relative tw:z-2"
             {% unless lazy_load == false %}
               loading="lazy"
             {% endunless %}
