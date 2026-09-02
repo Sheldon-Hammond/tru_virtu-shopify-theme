@@ -238,7 +238,7 @@
       "name": "Collection Slider",
       "settings": {
         "heading": "The Novelties",
-        "collection": "frontpage",
+        "collection": "shop-all",
         "desktop_products": 5,
         "tablet_products": 3,
         "mobile_products": "1",
