@@ -47,6 +47,35 @@
     },
     "footer": {
       "type": "footer",
+      "blocks": {
+        "image_hyAAUH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Tru-Virtu-Logo-white.png",
+            "image_width": 300,
+            "alignment": ""
+          }
+        },
+        "link_list_g6ikfm": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Shop",
+            "menu": "shop-footer-menu"
+          }
+        },
+        "link_list_jiHHQh": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Help",
+            "menu": "footer"
+          }
+        }
+      },
+      "block_order": [
+        "image_hyAAUH",
+        "link_list_g6ikfm",
+        "link_list_jiHHQh"
+      ],
       "settings": {
         "color_scheme": "scheme-4",
         "newsletter_enable": false,

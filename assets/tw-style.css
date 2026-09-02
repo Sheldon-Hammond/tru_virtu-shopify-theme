@@ -336,10 +336,6 @@
   .tw\:aspect-video {
     aspect-ratio: var(--tw-aspect-video);
   }
-  .tw\:size-full {
-    width: 100%;
-    height: 100%;
-  }
   .tw\:h-4 {
     height: calc(var(--tw-spacing) * 4);
   }
@@ -484,9 +480,6 @@
   .tw\:grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
-  .tw\:grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
   .tw\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -502,9 +495,6 @@
   .tw\:content-start {
     align-content: flex-start;
   }
-  .tw\:content-start\! {
-    align-content: flex-start !important;
-  }
   .tw\:items-center {
     align-items: center;
   }
@@ -513,9 +503,6 @@
   }
   .tw\:items-start {
     align-items: flex-start;
-  }
-  .tw\:items-start\! {
-    align-items: flex-start !important;
   }
   .tw\:justify-between {
     justify-content: space-between;
@@ -649,23 +636,14 @@
   .tw\:object-cover {
     object-fit: cover;
   }
-  .tw\:p-\[5px\] {
-    padding: 5px;
-  }
   .tw\:p-\[10px\] {
     padding: 10px;
   }
   .tw\:px-7 {
     padding-inline: calc(var(--tw-spacing) * 7);
   }
-  .tw\:px-\[5px\] {
-    padding-inline: 5px;
-  }
   .tw\:px-\[8px\]\! {
     padding-inline: 8px !important;
-  }
-  .tw\:px-\[10px\] {
-    padding-inline: 10px;
   }
   .tw\:px-\[10px\]\! {
     padding-inline: 10px !important;
@@ -823,9 +801,6 @@
   }
   .tw\:text-black\! {
     color: var(--tw-color-black) !important;
-  }
-  .tw\:text-blue-500 {
-    color: var(--tw-color-blue-500);
   }
   .tw\:text-blue-700 {
     color: var(--tw-color-blue-700);
@@ -992,32 +967,17 @@
     .tw\:lg\:grid-cols-1 {
       grid-template-columns: repeat(1, minmax(0, 1fr));
     }
-    .tw\:lg\:grid-cols-2 {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
     .tw\:lg\:grid-cols-5 {
       grid-template-columns: repeat(5, minmax(0, 1fr));
     }
-    .tw\:lg\:flex-col {
-      flex-direction: column;
-    }
     .tw\:lg\:justify-start {
       justify-content: flex-start;
-    }
-    .tw\:lg\:justify-items-start {
-      justify-items: start;
-    }
-    .tw\:lg\:gap-\[10px\] {
-      gap: 10px;
     }
     .tw\:lg\:gap-\[15px\] {
       gap: 15px;
     }
     .tw\:lg\:p-\[10px\] {
       padding: 10px;
-    }
-    .tw\:lg\:px-\[10px\] {
-      padding-inline: 10px;
     }
     @media (hover: hover) {
       .tw\:lg\:hover\:border-black\!:hover {
