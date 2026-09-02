@@ -9,6 +9,10 @@
 
   assign heading = section.settings.heading
   assign text = section.settings.text
+
+  if collection_image == blank
+    assign collection_image = section.settings.collection_image | default: images['collection-default-banner.jpg']
+  endif
 %}
 
 {%- style -%}

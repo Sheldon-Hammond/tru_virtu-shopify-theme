@@ -12,7 +12,7 @@
     "banner": {
       "type": "custom-collection_banner",
       "settings": {
-        "collection_image": "shopify://shop_images/Header-geldboerse2ESoj0XuSX5JN_cc02a647-a026-4aa3-820a-1fbe9f74ea92.jpg",
+        "collection_image": "{{ collection.metafields.custom.collection_banner.value }}",
         "banner_text": "TRU VIRTU® - Hi-Tech Wallets and Card Cases - Made in Germany",
         "banner_col": "#b48154",
         "font_col": "#ffffff",

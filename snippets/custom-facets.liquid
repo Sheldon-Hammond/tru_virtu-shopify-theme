@@ -35,7 +35,7 @@
   data-template="{{ template.name }}"
 >
   {%- if filter_type == 'horizontal' -%}
-    <facet-filters-form class="facets small-hide">
+    <facet-filters-form class="facets">
       <form
         id="FacetFiltersForm"
         class=""
@@ -107,7 +107,7 @@
             >
               <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
               {% comment %} Filters for both horizontal and vertical filter {% endcomment %}
-              <div class="filter_item-container tw:z-4 tw:grid tw:grid-cols-3 tw:gap-[10px] tw:w-full">
+              <div class="filter_item-container tw:z-4 tw:grid tw:md:grid-cols-3 tw:gap-[10px] tw:w-full">
                 {%- for filter in results.filters -%}
                   {% liquid
                     assign total_active_values = total_active_values | plus: filter.active_values.size
@@ -311,7 +311,7 @@
                 {%- endfor -%}
               </div>
               {%- if filter_type == 'horizontal' -%}
-                <div class="tw:mt-[0px]! tw:bg-bg_grey tw:z-3 tw:gap-[8px] active-facets active-facets-desktop">
+                <div class="tw:m-[0px]! tw:bg-bg_grey tw:z-3 tw:gap-[8px] active-facets active-facets-desktop">
                   {%- for filter in results.filters -%}
                     {%- for value in filter.active_values -%}
                       <facet-remove>
@@ -386,7 +386,7 @@
     </facet-filters-form>
   {%- endif -%}
   {% comment %}  Drawer and mobile filter {% endcomment %}
-  <menu-drawer
+  {% comment %} <menu-drawer
     class="mobile-facets__wrapper{% if filter_type == 'horizontal' or filter_type == 'vertical' %} medium-hide large-up-hide{% endif %}"
     data-breakpoint="mobile"
   >
@@ -727,9 +727,9 @@
         </form>
       </facet-filters-form>
     </details>
-  </menu-drawer>
+  </menu-drawer> {% endcomment %}
 
-  <div class="active-facets active-facets-mobile medium-hide large-up-hide">
+  {% comment %} <div class="active-facets active-facets-mobile medium-hide large-up-hide">
     {%- for filter in results.filters -%}
       {%- for value in filter.active_values -%}
         <facet-remove>
@@ -768,7 +768,7 @@
         <span>{{ 'products.facets.clear_all' | t }}</span>
       </a>
     </facet-remove>
-  </div>
+  </div> {% endcomment %}
   {% comment %} Sort, product count and filter pills at the end when filter is type of Drawer for the correct tabbing order {% endcomment %}
   {%- if enable_sorting and filter_type == 'drawer' -%}
     <facet-filters-form class="facets small-hide">
@@ -815,7 +815,7 @@
       </form>
     </facet-filters-form>
   {%- endif -%}
-  <div
+  {% comment %} <div
     class="product-count light{% if filter_type == 'vertical' or filter_type == 'horizontal' %} medium-hide large-up-hide{% endif %}"
     role="status"
   >
@@ -838,7 +838,7 @@
       </span>
     </h2>
     {%- render 'loading-spinner' -%}
-  </div>
+  </div> {% endcomment %}
   {%- if filter_type == 'drawer' -%}
     <facet-filters-form class="facets facets-pill small-hide">
       <form id="FacetFiltersPillsForm" class="facets__form">
